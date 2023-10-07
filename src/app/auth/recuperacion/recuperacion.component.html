@@ -9,5 +9,9 @@
   <p>ingresa el codigo de reuperacion y tu nueva contraseña</p>
   <input type="text" [(ngModel)]="resetToken" placeholder="Codigo de recuperacion">
   <input type="password" [(ngModel)]="newPassword" placeholder="Nueva contraseña">
+  <button (click)="resetPassword()"  class="btn btn-primary">>Restablecer Contraseña</button>
+</div>
 
+<div *ngIf="resetError">
+  <p>ha ocurrido un error. por favor intenta nuevamente</p>
 </div>
