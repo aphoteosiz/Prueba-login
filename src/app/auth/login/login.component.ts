@@ -54,9 +54,10 @@ export class LoginComponent implements OnInit {
   }
 
 
-  cancel() {
+recuperacion() {
+this.router.navigate(['/recuperacion'])
 
   }
-  
+
 
 }

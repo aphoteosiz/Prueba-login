@@ -32,4 +32,7 @@ export class AppComponent {
     //navega al componente login al dar click
     this.router.navigate(['/login']);
   }
+  recuperacion() {
+    this.router.navigate(['/src/app/auth/recuperacion'])
+  }
 }

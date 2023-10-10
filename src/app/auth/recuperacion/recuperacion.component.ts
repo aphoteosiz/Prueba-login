@@ -21,14 +21,16 @@ export class RecuperacionComponent {
 
     if (this.passwordResetService.requestpasswordReset(this.email)) {
       this.resetSuccess = true;
+
     } else {
       this.resetError = true;
     }
   }
 
   resetPassword() {
+    
     this.resetSuccess = false;
-    this.resetError = false;
+
 
     if (this.passwordResetService.resetPassword(this.resetToken, this.newPassword)) {
       this.resetSuccess = true;

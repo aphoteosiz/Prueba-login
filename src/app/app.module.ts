@@ -12,6 +12,7 @@ import { NavComponent } from './shared/nav/nav.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RecuperacionComponent } from './auth/recuperacion/recuperacion.component';
+import { CrearComponent } from './cruds/crear/crear.component';
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import { RecuperacionComponent } from './auth/recuperacion/recuperacion.componen
     LoginComponent,
     NavComponent,
     RecuperacionComponent,
+    CrearComponent,
   ],
   imports: [
     BrowserModule,

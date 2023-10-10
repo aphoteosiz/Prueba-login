@@ -9,11 +9,12 @@ export class PasswordResetService {
   constructor() { }
   requestpasswordReset(email: string): boolean{
     //solo para simular el envio de la solicitud de correo
-    this.resetToken = 'token_generado';
+    this.resetToken = 'token';
     return true;
   }
   resetPassword(token: string, newPassword: string): boolean{
-    if (token === this.resetToken) {
+
+    if (token == this.resetToken) {
       this.resetToken = null;
       return true;
     }

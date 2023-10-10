@@ -1,17 +1,23 @@
+<div class="componente-con-fondo">
+ <div class="row justify-content-center">
+  <div class="col-auto">
 <div *ngIf="!resetSuccess && !resetError">
-  <h2>Recuperar contraseña</h2>
+  <h3 class="card-title">Recuperar contraseña</h3>
   <input type="email" [(ngModel)]="email" placeholder="Correo Electronico">
   <p>enviaremos una clave de inicio de sesion a su correo</p>
-<button (click)="requestPasswordReset()"> enviar</button>
+<button (click)="requestPasswordReset()" class="btn btn-primary"> enviar</button>
 </div>
 <div *ngIf="resetSuccess && !resetError">
   <h2>Restablecer contraseña</h2>
   <p>ingresa el codigo de reuperacion y tu nueva contraseña</p>
   <input type="text" [(ngModel)]="resetToken" placeholder="Codigo de recuperacion">
   <input type="password" [(ngModel)]="newPassword" placeholder="Nueva contraseña">
-  <button (click)="resetPassword()"  class="btn btn-primary">>Restablecer Contraseña</button>
+  <button (click)="resetPassword()"  class="btn btn-primary">Restablecer Contraseña</button>
 </div>
 
 <div *ngIf="resetError">
   <p>ha ocurrido un error. por favor intenta nuevamente</p>
+</div>
+</div>
+</div>
 </div>
