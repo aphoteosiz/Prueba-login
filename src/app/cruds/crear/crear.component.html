@@ -1,9 +1,87 @@
+<div class="mcb-background-overlay">
+<h1 class="fs-1" class="fst-italic">CREAR</h1>
+<br><br>
+
 <div class="mb-3">
-  <label for="exampleFormControlInput1" class="form-label">titulo</label>
+<!-- <div class="componente-con-fondo"></div> -->
+  <!-- <div class="row justify-content-center"> -->
+    <!-- <div class="col-auto"> -->
+  <label for="exampleFormControlInput1" class="form-label" class="fw-bold">titulo</label>
   <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="ingrese el titulo">
 </div>
 <div class="mb-3">
-  <label for="exampleFormControlTextarea1" class="form-label">contenido</label>
+  <label for="exampleFormControlTextarea1" class="form-label" class="fw-bold">contenido</label>
   <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-  
 </div>
+<br>
+<div class="mb-3">
+  <label for="formFile" class="form-label" class="fw-bold">agregar una imagen</label>
+  <input class="form-control" type="file" id="formFile">
+</div>
+  <br>
+<p class="fw-bold">Tipo</p>
+
+  <div class="form-check">
+
+    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+    <label class="form-check-label" for="flexRadioDefault1">
+     aviso
+    </label>
+  </div>
+  <div class="form-check">
+    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+    <label class="form-check-label" for="flexRadioDefault2">
+      mensaje
+    </label>
+
+  </div>
+
+  <br>
+<select class="form-select" aria-label="Default select example">
+  <option selected>aplicacion donde se desplegara</option>
+  <option value="1">ENICARE</option>
+  <option value="2">SIUPP</option>
+  <option value="3">PAGINA OFICIAL</option>
+</select>
+<br>
+<P class="fw-bold">secciones de la aplicacion</P>
+<div class="form-check">
+  <input class="form-check-input" type="checkbox" value="" id="flexCheckIndeterminateDisabled" disabled>
+  <label class="form-check-label" for="flexCheckIndeterminateDisabled">
+    Disabled indeterminate checkbox
+  </label>
+</div>
+<div class="form-check">
+  <input class="form-check-input" type="checkbox" value="" id="flexCheckDisabled" disabled>
+  <label class="form-check-label" for="flexCheckDisabled">
+    Disabled checkbox
+  </label>
+</div>
+<div class="form-check">
+  <input class="form-check-input" type="checkbox" value="" id="flexCheckCheckedDisabled" checked disabled>
+  <label class="form-check-label" for="flexCheckCheckedDisabled">
+    Disabled checked checkbox
+  </label>
+
+</div>
+ <br>
+  <P class="fw-bold">secciones de la aplicacion</P>
+  <select class="form-select" aria-label="Default select example">
+    <option selected disabled>seleccione la zona donde se mostrara el anuncio</option>
+    <option value="1">Noreste</option>
+    <option value="2">Sureste</option>
+    <option value="3">Bajio</option>
+  </select>
+  <br><br>
+  <button type="button" class="btn btn-success">guardar</button>
+<button type="button" class="btn btn-danger">cancelar</button>
+</div>
+<!-- <p class="fw-bold">aplicacion</p>
+<ul class="dropdown-menu">
+  <li><a class="dropdown-item" href="#">Regular link</a></li>
+  <li><a class="dropdown-item disabled" aria-disabled="true">Disabled link</a></li>
+  <li><a class="dropdown-item" href="#">Another link</a></li>
+</ul> -->
+
+
+

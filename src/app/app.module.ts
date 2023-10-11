@@ -13,6 +13,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RecuperacionComponent } from './auth/recuperacion/recuperacion.component';
 import { CrearComponent } from './cruds/crear/crear.component';
+import { ModalesComponent } from './modales/modales.component';
+
+
 
 
 @NgModule({
@@ -25,6 +28,7 @@ import { CrearComponent } from './cruds/crear/crear.component';
     NavComponent,
     RecuperacionComponent,
     CrearComponent,
+    ModalesComponent
   ],
   imports: [
     BrowserModule,
