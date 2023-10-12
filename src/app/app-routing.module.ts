@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './auth/login/login.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
@@ -13,7 +13,8 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   { path: 'recuperacion', component: RecuperacionComponent },
   {path: 'crear', component: CrearComponent},
-  { path: 'modales', component:ModalesComponent}
+  { path: 'modales', component: ModalesComponent },
+  { path: 'botones', component: ModalesComponent }
 ];
 
 @NgModule({
