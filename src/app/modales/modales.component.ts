@@ -23,20 +23,20 @@ export class ModalesComponent {
     })
   }
   publicar() {
-     showModal: Boolean;
+    showModal: Boolean;
     Swal.fire({
       title: 'confirmacion',
       color: 'black',
       text: "¿desea publicar el contenido?",
       icon: 'warning',
-         input: 'checkbox',
+      input: 'checkbox',
       inputPlaceholder: 'publicar',
 
       background: 'linear-gradient(#228B22,#00FF00)',
 
 
       confirmButtonText: 'publicar',
-html: '<input type="text" id="datepicker" class="parrafo">',
+      html: '<input type="text" id="datepicker" class="parrafo">',
       confirmButtonColor: 'green',
       showCancelButton: true,
       cancelButtonText: 'cancelar',
@@ -52,80 +52,26 @@ html: '<input type="text" id="datepicker" class="parrafo">',
     })
   }
   eliminar() {
-    const swalWithBootstrapButtons = Swal.mixin({
-      customClass: {
-        confirmButton: 'btn btn-success',
-        cancelButton: 'btn btn-danger',
-      },
-      buttonsStyling: false
-    })
-
-    swalWithBootstrapButtons.fire({
-      title: '¿seguro que desea eliminar este archivo?',
-      text: "esta accion no se puede deshacer",
+    Swal.fire({
+      title: '¿Eliminar?',
+      text: "Los cambios no son reversibles!",
       icon: 'warning',
       showCancelButton: true,
-      confirmButtonText: 'si eliminar',
-      cancelButtonText: 'cancelar',
-      reverseButtons: true
+      confirmButtonColor: '#008d00',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'si, eliminar',
+      cancelButtonText: 'cancelar'
     }).then((result) => {
       if (result.isConfirmed) {
-        swalWithBootstrapButtons.fire(
-          'eliminado',
-          'su archivo ha sido eliminado',
+        Swal.fire(
+          'Eliminado!',
+          'tu anuncio ha sido eliminado.',
           'success'
-        )
-      } else if (
-        /* Read more about handling dismissals below */
-        result.dismiss === Swal.DismissReason.cancel
-      ) {
-        swalWithBootstrapButtons.fire(
-          'Cancelado',
-          'su archivo esta a salvo',
-          'error'
+
         )
       }
     })
+
   }
-
-
-
-
 }
-
-
-
-    //   Swal.fire({
-    //     title: 'confirmacion',
-    //     text: "¿desea publicar el contenido?",
-    //     icon: 'warning',
-    //     input: 'checkbox',
-    //     inputPlaceholder: 'publicar',
-    //     onOpen: function () {
-    //       $('#datetimepicker').datetimepicker({
-    //         format: 'DD/MM/YYYY hh:mm A',
-    //         defaultDate: new Date()
-    //       });
-    //     },
-
-    //     showCancelButton: true,
-    //     confirmButtonColor: '#3085d6',
-    //     cancelButtonColor: '#d33',
-    //     confirmButtonText: 'si publicar!'
-    //   }).then((result) => {
-    //     if (result.isConfirmed) {
-    //       Swal.fire(
-    //         'su contenido ha sido publicado!',
-    //         '',
-    //         'success'
-
-    //       )
-    //     }
-    //   }
-
-
-    //   )
-    // }
-
-
 

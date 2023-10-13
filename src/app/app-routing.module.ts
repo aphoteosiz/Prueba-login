@@ -5,6 +5,7 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { RecuperacionComponent } from './auth/recuperacion/recuperacion.component';
 import { ModalesComponent } from './modales/modales.component';
 import { CrearComponent } from './cruds/crear/crear.component';
+import { PanelControlComponent } from './pages/panel-control/panel-control.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -14,7 +15,8 @@ const routes: Routes = [
   { path: 'recuperacion', component: RecuperacionComponent },
   {path: 'crear', component: CrearComponent},
   { path: 'modales', component: ModalesComponent },
-  { path: 'botones', component: ModalesComponent }
+  { path: 'botones', component: ModalesComponent },
+  {path: 'panelControl', component: PanelControlComponent}
 ];
 
 @NgModule({

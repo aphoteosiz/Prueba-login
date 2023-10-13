@@ -14,6 +14,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { RecuperacionComponent } from './auth/recuperacion/recuperacion.component';
 import { CrearComponent } from './cruds/crear/crear.component';
 import { ModalesComponent } from './modales/modales.component';
+import { PanelControlComponent } from './pages/panel-control/panel-control.component';
 
 
 
@@ -28,7 +29,8 @@ import { ModalesComponent } from './modales/modales.component';
     NavComponent,
     RecuperacionComponent,
     CrearComponent,
-    ModalesComponent
+    ModalesComponent,
+    PanelControlComponent
   ],
   imports: [
     BrowserModule,
