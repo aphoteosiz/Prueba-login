@@ -4,4 +4,5 @@ export interface Publicacion {
   estado: boolean;
   publicacion: number;
   cierre: number;
+  acciones: boolean;
 }

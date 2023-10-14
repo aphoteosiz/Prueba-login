@@ -22,7 +22,9 @@ export class PanelControlComponent implements OnInit {
     notificacion: 'hahaha',
     publicacion: 12344,
     cierre: 2123,
-    estado: true
+    estado: true,
+    acciones: true,
+
   }
   publicacion2: Publicacion = {
     id: 2,
@@ -30,6 +32,7 @@ export class PanelControlComponent implements OnInit {
     publicacion: 1234,
     cierre: 121212,
     estado: false,
+    acciones:true,
 
   }
   publicacion3: Publicacion = {
@@ -38,6 +41,8 @@ export class PanelControlComponent implements OnInit {
     publicacion: 231212,
     cierre: 44323123,
     estado: false,
+    acciones: true,
+
 
   }
 
@@ -76,28 +81,54 @@ export class PanelControlComponent implements OnInit {
     this.router.navigate(['/crear'])
   }
   editar() {
-    const swalWithBootstrapButtons = Swal.mixin({
-      customClass: {
-        confirmButton: 'btn btn-success',
-        cancelButton: 'btn btn-danger'
-      },
-      buttonsStyling: false
-    })
-
-    swalWithBootstrapButtons.fire({
-      title: '¿Editar?',
+    Swal.fire({
+      title: '¿editar?',
 
       icon: 'warning',
       showCancelButton: true,
-      confirmButtonText: 'aceptar',
-      cancelButtonText: 'cancelar',
-      reverseButtons: true
+      confirmButtonColor: 'green',
+      cancelButtonColor: 'red',
+      confirmButtonText: 'editar',
+      cancelButtonText: 'cancelar'
+    }).then((result) => {
+      if (result.isConfirmed) {
 
+      }
     })
+  }
+  compartir() {
+    Swal.fire({
+      title: '¿seguro que quieres publicar esto?',
 
+      showCancelButton: true,
+      icon:'question',
+      cancelButtonText: 'cancelar',
+      cancelButtonColor: 'red',
+      confirmButtonText: 'publicar?',
+      confirmButtonColor: 'green',
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        Swal.fire('tu contenido se ha publicado', '', 'success')
+      }
+    })
+  }
+  cerrar() {
+    Swal.fire({
+      title: 'Cargando...',
+      allowEscapeKey: false,
+      allowOutsideClick: true,
+      showConfirmButton: false
+    });
+
+    Swal.showLoading();
+    setTimeout(() => {
+      Swal.close();
+    }, 1000);
+  }
   }
 
 
-  }
+
 
 

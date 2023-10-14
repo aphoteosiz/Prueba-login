@@ -3,6 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/services/login.service';
 import { LoginRequest } from 'src/app/services/loginRequest';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -33,19 +34,43 @@ export class LoginComponent implements OnInit {
       this.loginService.login(this.loginForm.value as LoginRequest).subscribe({
         next: (userData) => {
           console.log(userData);
+
         },
+
         error: (errorData) => {
           console.error(errorData);
           this.loginError = errorData;
         },
         complete: () => {
           console.info("Login completo");
-          this.router.navigateByUrl('/inicio');
+          this.router.navigateByUrl('/panelControl');
           this.loginForm.reset();
-        }
-      })
+          const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+              toast.addEventListener('mouseenter', Swal.stopTimer)
+              toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+          })
 
+          Toast.fire({
+            icon: 'success',
+            title: 'ingresando'
+          })
+        }
+      }
+
+      )
     }
+  
+
+
+
+
     else {
       this.loginForm.markAllAsTouched();
       alert("Error al ingresar los datos.");
@@ -57,6 +82,24 @@ export class LoginComponent implements OnInit {
 recuperacion() {
 this.router.navigate(['/recuperacion'])
 
+}
+  signed() {
+    const Toast = Swal.mixin({
+      toast: true,
+      position: 'top-end',
+      showConfirmButton: false,
+      timer: 3000,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.addEventListener('mouseenter', Swal.stopTimer)
+        toast.addEventListener('mouseleave', Swal.resumeTimer)
+      }
+    })
+
+    Toast.fire({
+      icon: 'success',
+      title: 'ingresando'
+    })
   }
 
 

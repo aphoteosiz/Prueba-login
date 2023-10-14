@@ -2,7 +2,7 @@
 <div class="componente-con-fondo">
 <h1 style="text-align: center;">BIENVENIDO</h1>
 <div class="mover-a-derecha">
-<button class="btn btn-link">cerrar sesion  <i class="bi bi-box-arrow-right"></i></button>
+<button class="btn btn-link" routerLink="/login" (click)="cerrar()">cerrar sesion  <i class="bi bi-box-arrow-right"></i></button>
 </div>
 <div >
 <br><br>
@@ -37,22 +37,22 @@
 </div>
 <br>
 <div class="text-center centrar-verticalmente">
-<table class="table table-striped table-hover">
+<table class="table table-bordered table-striped table-hover">
    <thead >
-    <tr>
+    <tr class="text-center headerTabla tabla-text">
       <th scope="col">ver</th>
       <th scope="col">notificacion</th>
       <th scope="col">fecha de publicacion</th>
       <th scope="col">fecha de vencimiento</th>
       <th scope="col">estado</th>
       <th scope="col">acciones</th>
-
-
     </tr>
   </thead>
-  <tbody>
+  <tbody class="text-center">
+
     <tr *ngFor="let publicacion of lstPublicaciones">
-      <button class="btn btn-dark"><i class="bi bi-eye-fill"></i> </button>
+
+      <td><button type="button" class="btn btn-dark"><i class="bi bi-eye-fill" style="margin:10px"></i></button></td>
       <td>{{publicacion.notificacion}}</td>
        <td>{{publicacion.publicacion}}</td>
        <td>{{publicacion.cierre}}</td>
@@ -61,11 +61,11 @@
 
 
 
-
-      <button (click)="editar()" class="btn btn-success" ><i class="bi bi-pencil-square"></i> </button>
-      <button (click)="eliminar()" class="btn btn-danger"><i class="bi bi-trash-fill"></i></button>
-      <button class="btn btn-secondary"><i class="bi bi-share"></i></button>
-
+      <div class="d-flex justify-content-center">
+      <button type="button" class="btn btn-success" (click)="editar()"  ><i class="bi bi-pencil-square" style="margin:10px"></i> </button>
+      <button (click)="eliminar()" class="btn btn-danger"><i class="bi bi-trash-fill" style="margin:10px"></i></button>
+      <button class="btn btn-secondary"><i class="bi bi-share" style="margin:10px"(click)="compartir()"></i></button>
+</div>
     </tr>
 
   </tbody>
