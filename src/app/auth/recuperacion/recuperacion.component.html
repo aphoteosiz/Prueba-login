@@ -5,14 +5,14 @@
   <h3 class="card-title">Recuperar contraseña</h3>
   <input type="email" [(ngModel)]="email" placeholder="Correo Electronico">
   <p>enviaremos una clave de inicio de sesion a su correo</p>
-<button (click)="requestPasswordReset()" class="btn btn-primary"> enviar</button>
+<button (click)="requestPasswordReset()" class="btn btn-success"> enviar</button>
 </div>
 <div *ngIf="resetSuccess && !resetError">
   <h2>Restablecer contraseña</h2>
   <p>ingresa el codigo de reuperacion y tu nueva contraseña</p>
   <input type="text" [(ngModel)]="resetToken" placeholder="Codigo de recuperacion">
   <input type="password" [(ngModel)]="newPassword" placeholder="Nueva contraseña">
-  <button (click)="resetPassword()"  class="btn btn-primary">Restablecer Contraseña</button>
+  <button (click)="resetPassword()"  class="btn btn-success">Restablecer Contraseña</button>
 </div>
 
 <div *ngIf="resetError">

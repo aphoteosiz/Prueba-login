@@ -15,6 +15,7 @@ import { RecuperacionComponent } from './auth/recuperacion/recuperacion.componen
 import { CrearComponent } from './cruds/crear/crear.component';
 import { ModalesComponent } from './modales/modales.component';
 import { PanelControlComponent } from './pages/panel-control/panel-control.component';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -38,6 +39,7 @@ import { PanelControlComponent } from './pages/panel-control/panel-control.compo
     ReactiveFormsModule,
     HttpClientModule,
     FormsModule,
+    RouterModule
 
   ],
   providers: [],

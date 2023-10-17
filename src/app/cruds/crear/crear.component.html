@@ -1,21 +1,22 @@
 <!-- <div class="mcb-background-overlay"> -->
   <!-- <div > -->
-    <!-- <div class="componente-con-fondo"></div> -->
+    <div class="componente-con-fondo"></div>
 <h1 class="fs-1" class="fst-italic">CREAR</h1>
 <br><br>
 
 <!-- <div class="mb-3"> -->
 <!-- <div class="componente-con-fondo"></div> -->
   <!-- <div class="row justify-content-center"> -->
-    <div class="container text-center"></div>
+    <div class="container-fluid"></div>
     <div class="row">
-      <div class="col-xl">
-        <label for="exampleFormControlInput1" class="form-label" class="fw-bold">titulo</label>
-        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="ingrese el titulo">
+      <div class="col">
+        <form (ngSubmit)="evaluarFormulario()" #miForm="ngForm">
 
+        <label for="exampleFormControlInput1" class="form-label" class="fw-bold">titulo</label>
+        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="ingrese el titulo"  [(ngModel)]="titulo" name="titulo" required>
 
         <label for="exampleFormControlTextarea1" class="form-label" class="fw-bold">contenido</label>
-        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" required></textarea>
 
         <br>
 
@@ -41,7 +42,7 @@
         </div>
 
         <br>
-        <select class="form-select" aria-label="Default select example">
+        <select class="form-select" aria-label="Default select example" required>
           <option selected>aplicacion donde se desplegara</option>
           <option value="1">ENICARE</option>
           <option value="2">SIUPP</option>
@@ -72,16 +73,18 @@
 
         <br>
         <P class="fw-bold">secciones de la aplicacion</P>
-        <select class="form-select" aria-label="Default select example">
+        <select class="form-select" aria-label="Default select example" required>
           <option selected disabled>seleccione la zona donde se mostrara el anuncio</option>
           <option value="1">Noreste</option>
           <option value="2">Sureste</option>
           <option value="3">Bajio</option>
         </select>
         <br><br>
-        <button type="button" class="btn btn-success">guardar</button>
+        <button (click)="evaluarFormulario()" type="button" class="btn btn-success">guardar</button>
         <button (click)="salir()" type="button" class="btn btn-danger">cancelar</button>
+        </form>
         </div>
+
       </div>
 
 

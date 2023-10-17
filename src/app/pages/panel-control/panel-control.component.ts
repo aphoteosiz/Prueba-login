@@ -126,6 +126,9 @@ export class PanelControlComponent implements OnInit {
       Swal.close();
     }, 1000);
   }
+  evaluarFormulario() {
+    
+  }
   }
 
 

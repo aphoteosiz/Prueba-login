@@ -2,15 +2,27 @@
 <div class="componente-con-fondo">
 <h1 style="text-align: center;">BIENVENIDO</h1>
 <div class="mover-a-derecha">
-<button class="btn btn-link" routerLink="/login" (click)="cerrar()">cerrar sesion  <i class="bi bi-box-arrow-right"></i></button>
+
+<button class="btn btn-light" routerLink="/login" (click)="cerrar()">cerrar sesion  <i class="bi bi-box-arrow-right"></i></button>
 </div>
 <div >
 <br><br>
+<div class="container"data-bs-spy="scroll" >
+  <div class="row">
+    <div class="col-4 text-start" style="background-color: red;">123</div>
+<div class="col-4 text-end" style="background-color: blue;">1233</div>
+<div class="col-4 text-start" style="background-color: aqua;">123</div>
+    </div>
 
 <h2>zonas</h2>
-<div class="mover-a-derecha">
-  <button (click)="irAcrear()" class="btn btn-success"><i class="bi bi-file-earmark-plus"></i> Nueva publicacion</button>
+<div class="d-flex justify-content-end">
+  <button (click)="irAcrear()" class="btn btn-success"><i class="bi bi-file-earmark-plus"></i> Nueva
+    publicacion</button>
 </div>
+
+<div class="row">
+  <div class="col-4">
+
 <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
 
   <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
@@ -22,21 +34,22 @@
   <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
   <label class="btn btn-outline-success" for="btnradio3">Bajio</label>
 </div>
-
+</div>
 </div>
 <br>
-
+<div class="container">
 <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
   <input type="radio" class="btn-check" name="prueba1" id="prueba1" autocomplete="off">
   <label class="btn btn-outline-dark" for="prueba1">Mensajes</label>
 
   <input type="radio" class="btn-check" name="prueba1" id="prueba2" autocomplete="off">
   <label class="btn btn-outline-dark" for="prueba2">Avisos</label>
-
+</div>
+</div>
 
 </div>
 <br>
-<div class="text-center centrar-verticalmente">
+<div class="container">
 <table class="table table-bordered table-striped table-hover">
    <thead >
     <tr class="text-center headerTabla tabla-text">
@@ -65,19 +78,21 @@
       <button type="button" class="btn btn-success" (click)="editar()"  ><i class="bi bi-pencil-square" style="margin:10px"></i> </button>
       <button (click)="eliminar()" class="btn btn-danger"><i class="bi bi-trash-fill" style="margin:10px"></i></button>
       <button class="btn btn-secondary"><i class="bi bi-share" style="margin:10px"(click)="compartir()"></i></button>
+
+
 </div>
+
     </tr>
 
   </tbody>
+
 </table>
+</div>
 <br>
-</div>
+
 </div>
 
-<!-- <nav aria-label="...">
-  <ul class="pagination pagination-lg">
 
-    <li class="page-item"><a class="page-link" href="#">avisos</a></li>
-    <li class="page-item"><a class="page-link" href="#">mensajes</a></li>
-  </ul>
-</nav> -->
+
+
+

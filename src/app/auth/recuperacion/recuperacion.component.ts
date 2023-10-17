@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { PasswordResetService } from 'src/app/services/password-reset.service';
+import { Router} from '@angular/router';
 
 @Component({
   selector: 'app-recuperacion',
@@ -13,7 +14,8 @@ export class RecuperacionComponent {
   resetSuccess: boolean = false;
   resetError: boolean = false;
 
-  constructor(private passwordResetService: PasswordResetService) { }
+
+  constructor(private passwordResetService: PasswordResetService, private router:Router) { }
 
   requestPasswordReset() {
     this.resetSuccess = false;
@@ -28,14 +30,17 @@ export class RecuperacionComponent {
   }
 
   resetPassword() {
-    
+
     this.resetSuccess = false;
 
 
     if (this.passwordResetService.resetPassword(this.resetToken, this.newPassword)) {
       this.resetSuccess = true;
-    } else {
-      this.resetError = true;
-    }
+
+
+      // } else {
+      //   this.resetError = true;
+      // }
+    }this.router.navigate(['/login']);
   }
 }
