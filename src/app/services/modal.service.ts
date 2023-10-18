@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 export class ModalService {
 
   constructor() { }
-    public modal: boolean = false;
+  public modal: boolean = false;
 
   showModal() {
     this.modal = true;
@@ -16,8 +16,10 @@ export class ModalService {
     this.modal = false;
   }
 
+  }
 
-}
+
+
 
 
 

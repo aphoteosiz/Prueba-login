@@ -8,3 +8,56 @@
 
 
 <button class="boton eliminar" (click)="eliminar()">eliminar</button>
+<br>
+<br>
+<div class="modal-is-open animation fade-in" *ngIf="modalService.modal">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal" tabindex="-1" role="dialog" style="display: block;">
+            <div class="modal-dialog modal-sm" role="document">
+                <div class="modal-content text-center">
+                    <div class="modal-header">
+                        <h5 class="modal-title align-items-center">Registrar nueva area</h5>
+                    </div>
+
+                    <div class="modal-body" class="text-center">
+                        <label for="textInput1">Nombre del area:</label>
+                        <br>
+                        <input type="text" id="textInput1" [(ngModel)]="input1Value">
+                        <br>
+
+                        <label for="textInput2">clave:</label>
+                        <br>
+                        <input type="text" id="textInput2" [(ngModel)]="input2Value">
+                        <br>
+                        <div class="content-center">
+                            <label for="selectBox" class="align-items-center">Selecciona una opción:</label>
+                            <br>
+                            <select id="selectBox" [(ngModel)]="selectedOption">
+                                <option value="opcion1">Opción 1</option>
+                                <option value="opcion2">Opción 2</option>
+                                <option value="opcion3">Opción 3</option>
+                                <br>
+                            </select>
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-sm">
+
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-success btn text-left" data-dismiss="modal"
+                                (click)="cancel()">Save changes</button>
+                            <button type="button" class="btn btn-danger" data-dismiss="modal"
+                                (click)="cancel()">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+

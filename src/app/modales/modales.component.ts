@@ -1,8 +1,8 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import Swal from 'sweetalert2';
 import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
 import { BsLocaleService } from 'ngx-bootstrap/datepicker';
-import { esLocale } from 'ngx-bootstrap/locale';
+import { ModalService } from '../services/modal.service';
 
 @Component({
   selector: 'app-modales',
@@ -10,9 +10,11 @@ import { esLocale } from 'ngx-bootstrap/locale';
   styleUrls: ['./modales.component.css']
 })
 export class ModalesComponent {
+  modalService: any;
   constructor(config: BsDatepickerConfig, private localeService: BsLocaleService) {
     config.dateInputFormat = 'DD/MM/YYYY';
     this.localeService.use('esLocale');
+    activo: true;
   }
   showModal() {
     Swal.fire({
@@ -32,7 +34,7 @@ export class ModalesComponent {
       input: 'checkbox',
       inputPlaceholder: 'publicar',
 
-      background: 'linear-gradient(#228B22,#00FF00)',
+
 
 
       confirmButtonText: 'publicar',
@@ -73,5 +75,27 @@ export class ModalesComponent {
     })
 
   }
+  checkprueba() {
+    cancel(){
+      console.log("entrooooooo");
+
+      this.modalService.modal = false;
+    }
+
+
+    save() {
+      console.log("entrooooooo");
+
+      this.modalService.modal = false;
+    }
+    closeModal(){
+      this.modalService.modal = false;
+    }
+  }
+
+  }
+}
+function save() {
+  throw new Error('Function not implemented.');
 }
 

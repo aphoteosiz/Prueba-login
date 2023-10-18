@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener, ViewChild } from '@angular/core';
 import { Publicacion } from 'src/app/interfaces/publicaciones.interface';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
@@ -11,6 +11,12 @@ import Swal from 'sweetalert2';
   styleUrls: ['./panel-control.component.css']
 })
 export class PanelControlComponent implements OnInit {
+  // @HostListener("widows: scroll", ['event'])
+  // doSometingOninternalScroll($event: Event) {
+  //   let scrollOfset = $event.target.children[0].scrollTop;
+  //   console.log("window:scroll: ", scrollOfset);
+  // }
+  @ViewChild('fullscreenModal') modal: any;
   [x: string]: any;
   constructor(public router: Router) { }
 
@@ -126,9 +132,10 @@ export class PanelControlComponent implements OnInit {
       Swal.close();
     }, 1000);
   }
-  evaluarFormulario() {
-    
+  ver() {
+
   }
+
   }
 
 

@@ -1,7 +1,6 @@
 import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './auth/login/login.component';
-import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { RecuperacionComponent } from './auth/recuperacion/recuperacion.component';
 import { ModalesComponent } from './modales/modales.component';
 import { CrearComponent } from './cruds/crear/crear.component';
