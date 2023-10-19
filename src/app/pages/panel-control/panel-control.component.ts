@@ -2,6 +2,10 @@ import { Component, OnInit, HostListener, ViewChild } from '@angular/core';
 import { Publicacion } from 'src/app/interfaces/publicaciones.interface';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { ModalService } from 'src/app/services/modal.service';
+import { NgModel } from '@angular/forms';
+import { calendar } from 'ngx-bootstrap/chronos/moment/calendar';
+
 
 
 
@@ -17,8 +21,15 @@ export class PanelControlComponent implements OnInit {
   //   console.log("window:scroll: ", scrollOfset);
   // }
   @ViewChild('fullscreenModal') modal: any;
-  [x: string]: any;
-  constructor(public router: Router) { }
+  selectedDate: string | undefined;
+  pub: any;
+
+
+  constructor(public router: Router, public modalServices: ModalService) { }
+  esPublicar: boolean=false;
+  input2Value: any;
+  selectedOption: any;
+
 
 
   lstPublicaciones: Publicacion[] = [];
@@ -38,7 +49,7 @@ export class PanelControlComponent implements OnInit {
     publicacion: 1234,
     cierre: 121212,
     estado: false,
-    acciones:true,
+    acciones: true,
 
   }
   publicacion3: Publicacion = {
@@ -71,7 +82,7 @@ export class PanelControlComponent implements OnInit {
       showCancelButton: true,
       confirmButtonColor: 'green',
       cancelButtonColor: '#d33',
-      cancelButtonText:'cancelar',
+      cancelButtonText: 'cancelar',
       confirmButtonText: 'si eliminar!'
     }).then((result) => {
       if (result.isConfirmed) {
@@ -107,7 +118,7 @@ export class PanelControlComponent implements OnInit {
       title: '¿seguro que quieres publicar esto?',
 
       showCancelButton: true,
-      icon:'question',
+      icon: 'question',
       cancelButtonText: 'cancelar',
       cancelButtonColor: 'red',
       confirmButtonText: 'publicar?',
@@ -132,10 +143,31 @@ export class PanelControlComponent implements OnInit {
       Swal.close();
     }, 1000);
   }
-  ver() {
+  ver(){}
+  mostrarModal() {
+    console.log("modal");
+
+    this.modalServices.mostrarModal();
 
   }
+  cancel() {
 
+    this.modalServices.modal = false;
+  }
+  resetDate() {
+    this.selectedDate = '';
+  }
+  publicar() {
+
+    if (this.esPublicar) {
+      console.log(this.esPublicar);
+    }
+
+
+  }
+  cancelar() {
+    this.input2Value = '';
+  }
   }
 
 

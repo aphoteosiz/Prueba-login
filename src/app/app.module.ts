@@ -16,6 +16,7 @@ import { CrearComponent } from './cruds/crear/crear.component';
 import { ModalesComponent } from './modales/modales.component';
 import { PanelControlComponent } from './pages/panel-control/panel-control.component';
 import { RouterModule } from '@angular/router';
+import  DatepickerModule  from 'ngx-bootstrap';
 
 
 
@@ -39,7 +40,8 @@ import { RouterModule } from '@angular/router';
     ReactiveFormsModule,
     HttpClientModule,
     FormsModule,
-    RouterModule
+    RouterModule,
+    
 
   ],
   providers: [],

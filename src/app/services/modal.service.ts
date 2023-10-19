@@ -4,11 +4,14 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class ModalService {
+  showModal() {
+    throw new Error('Method not implemented.');
+  }
 
   constructor() { }
   public modal: boolean = false;
 
-  showModal() {
+  mostrarModal() {
     this.modal = true;
   }
 

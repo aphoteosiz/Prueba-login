@@ -10,12 +10,18 @@ import { ModalService } from '../services/modal.service';
   styleUrls: ['./modales.component.css']
 })
 export class ModalesComponent {
-  modalService: any;
-  constructor(config: BsDatepickerConfig, private localeService: BsLocaleService) {
+
+
+
+input1Value: any;
+input2Value: any;
+selectedOption: any;
+
+  constructor(config: BsDatepickerConfig, private localeService: BsLocaleService, public modalServices: ModalService) {
     config.dateInputFormat = 'DD/MM/YYYY';
     this.localeService.use('esLocale');
     activo: true;
-  }
+}
   showModal() {
     Swal.fire({
       icon: 'error',
@@ -75,26 +81,33 @@ export class ModalesComponent {
     })
 
   }
-  checkprueba() {
+
     cancel(){
+
       console.log("entrooooooo");
 
-      this.modalService.modal = false;
+      this.modalServices.modal = false;
     }
+  mostrarModal() {
+    console.log("modal");
 
-
-    save() {
-      console.log("entrooooooo");
-
-      this.modalService.modal = false;
-    }
-    closeModal(){
-      this.modalService.modal = false;
-    }
+    this.modalServices.mostrarModal();
+    // this.modalService.mostrarModal();
   }
 
+
+    // save() {
+    //   console.log("entrooooooo");
+
+    //   this.modalService.modal = false;
+    // }
+    // closeModal(){
+    //   this.modalService.modal = false;
+    // }
   }
-}
+
+
+
 function save() {
   throw new Error('Function not implemented.');
 }
