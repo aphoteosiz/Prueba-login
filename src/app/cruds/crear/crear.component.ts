@@ -2,17 +2,55 @@ import { Component, ViewChild } from '@angular/core';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
 import { NgModel, NgForm } from '@angular/forms';
+import { ModalService } from 'src/app/services/modal.service';
+import { aplicaciones } from '../../interfaces/aplicaciones.interface';
+
+
 
 @Component({
   selector: 'app-crear',
   templateUrl: './crear.component.html',
   styleUrls: ['./crear.component.css']
+ 
 })
+
 export class CrearComponent {
+   options = [
+    { label: 'login', selected: false },
+    { label: 'principal', selected: false },
+    { label: 'crear', selected: false },
+    { label: 'editar', selected: false }
+  ];
   @ViewChild('miForm')
   form!: NgForm;
   titulo!: string;
-  constructor(private router: Router) { }
+  constructor(private router: Router, public modalServices: ModalService) { }
+
+  lstAplicaciones: aplicaciones[] = [];
+
+  aplicacion: aplicaciones = {
+    id: 1,
+    aplicacion:'SIUP',
+
+  }
+  aplicacion2: aplicaciones = {
+    id: 2,
+    aplicacion: 'ENNIOSS',
+
+  }
+  aplicacion3: aplicaciones = {
+    id: 3,
+    aplicacion: 'PAGINA PRINCIPAL',
+
+  }
+  ngOnInit() {
+    this.lstAplicaciones.push(this.aplicacion);
+    this.lstAplicaciones.push(this.aplicacion2);
+    this.lstAplicaciones.push(this.aplicacion3);
+
+
+    console.log(this.lstAplicaciones);
+  }
 
   salir() {
     Swal.fire({
@@ -80,6 +118,15 @@ export class CrearComponent {
 
 
 
+  }
+  mostrarModal() {
+    console.log("modal");
+
+    this.modalServices.mostrarModal();
+
+  }
+  mostrarSeleccion(){
+    const opcionesSeleccionadas = this.options.filter
   }
 }
 

@@ -42,12 +42,64 @@
         </div>
 
         <br>
-        <select class="form-select" aria-label="Default select example" required>
-          <option selected>aplicacion donde se desplegara</option>
+        <button (click)="mostrarModal()" name="aplicaciones" class="d-flex justify-content-center align-items-center">Aplicacion</button>
+        <div class="modal-is-open animation fade-in" *ngIf="modalServices.modal">
+          <div class="modal-dialog modal-fullscreen-sm-down">
+            <div class="modal" tabindex="-1" role="dialog" style="display: block;">
+              <div class="modal-dialog modal-sm" role="document">
+                <div class="modal-content text-center">
+                  <div class="modal-header text-center">
+                    <h5 class="modal-title align-items-center">aplicaciones</h5>
+                  </div>
+
+                  <div  class="modal-body" class="text-center">
+                  <select  class="form-select" aria-label="Default select example" required>
+
+                    <option *ngFor="let item of lstAplicaciones">{{item.aplicacion}}</option>
+                    <!-- <option value="1">ENICARE</option>
+                    <option value="2">SIUPP</option>
+                    <option value="3">PAGINA OFICIAL</option> -->
+                  </select>
+                    <br>
+
+                    <!-- <input type="checkbox" [(ngModel)]="esPublicar">
+                    <br>
+
+                    <label for="textInput2">fecha de cierre</label>
+                    <br>
+                    <div class="container">
+                      <input (click)="resetDate()" class="form-control" type="date" id="textInput2" [(ngModel)]="selectedDate"
+                        [disabled]="esPublicar==false">
+                    </div> -->
+                    <br>
+                    <div class="content-center">
+                      <div class="container">
+                        <div class="row">
+                          <div class="col-sm">
+
+                          </div>
+
+                        </div>
+                      </div>
+
+                    </div>
+                    <div class="modal-footer">
+                      <!-- <button type="button" class="btn btn-success btn text-left" data-dismiss="modal" (click)="publicar()">
+                        publicar</button>
+                      <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="cancelar()">cancelar</button>
+                    </div>
+                  </div> -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- <select class="form-select" aria-label="Default select example"  required>
+          <option selected disabled>aplicacion donde se desplegara</option>
           <option value="1">ENICARE</option>
           <option value="2">SIUPP</option>
           <option value="3">PAGINA OFICIAL</option>
-        </select>
+        </select> -->
         <br>
         <P class="fw-bold">secciones de la aplicacion</P>
         <div class="form-check">
@@ -82,7 +134,7 @@
         <br><br>
         <button (click)="evaluarFormulario()" type="button" class="btn btn-success">guardar</button>
         <button (click)="salir()" type="button" class="btn btn-danger">cancelar</button>
-        </form>
+        <!-- </form> -->
         </div>
 
       </div>

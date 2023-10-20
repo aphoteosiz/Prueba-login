@@ -21,14 +21,13 @@ export class PanelControlComponent implements OnInit {
   //   console.log("window:scroll: ", scrollOfset);
   // }
   @ViewChild('fullscreenModal') modal: any;
-  selectedDate: string | undefined;
-  pub: any;
+  selectedDate: boolean = false;
+
 
 
   constructor(public router: Router, public modalServices: ModalService) { }
-  esPublicar: boolean=false;
-  input2Value: any;
-  selectedOption: any;
+  esPublicar: boolean = false;
+
 
 
 
@@ -57,6 +56,16 @@ export class PanelControlComponent implements OnInit {
     notificacion: 'aaaaa',
     publicacion: 231212,
     cierre: 44323123,
+    estado: true,
+    acciones: true,
+
+
+  }
+  publicacion4: Publicacion = {
+    id: 4,
+    notificacion: 'bbbbb',
+    publicacion: 121231,
+    cierre: 3221321,
     estado: false,
     acciones: true,
 
@@ -69,6 +78,7 @@ export class PanelControlComponent implements OnInit {
     this.lstPublicaciones.push(this.publicacion);
     this.lstPublicaciones.push(this.publicacion2);
     this.lstPublicaciones.push(this.publicacion3);
+    this.lstPublicaciones.push(this.publicacion4);
 
     console.log(this.lstPublicaciones);
   }
@@ -143,7 +153,7 @@ export class PanelControlComponent implements OnInit {
       Swal.close();
     }, 1000);
   }
-  ver(){}
+  ver() { }
   mostrarModal() {
     console.log("modal");
 
@@ -152,24 +162,37 @@ export class PanelControlComponent implements OnInit {
   }
   cancel() {
 
-    this.modalServices.modal = false;
+
   }
   resetDate() {
-    this.selectedDate = '';
+    this.selectedDate = false
   }
   publicar() {
 
-    if (this.esPublicar) {
-      console.log(this.esPublicar);
-    }
+    Swal.fire({
+      position: 'top-end',
+      icon: 'success',
+      title: 'tu publicacion se ha realizado',
+      showConfirmButton: false,
+      timer: 1500
+    })
+    this.modalServices.modal = false;
+    this.esPublicar = false;
+    this.selectedDate = true;
 
+     this.modalServices.modal = false;
+    this.esPublicar = false;
+    this.selectedDate = true;
 
   }
+
   cancelar() {
-    this.input2Value = '';
-  }
+    this.modalServices.modal = false;
+    this.esPublicar = false;
+    this.selectedDate = true;
   }
 
+}
 
 
 
