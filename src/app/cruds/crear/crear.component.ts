@@ -1,9 +1,10 @@
 import { Component, ViewChild } from '@angular/core';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
-import { NgModel, NgForm } from '@angular/forms';
+import { NgModel, NgForm, FormBuilder,FormGroup,FormArray,FormControl,Validators } from '@angular/forms';
 import { ModalService } from 'src/app/services/modal.service';
 import { aplicaciones } from '../../interfaces/aplicaciones.interface';
+import { secciones } from 'src/app/interfaces/secciones.interfaces';
 
 
 
@@ -11,7 +12,7 @@ import { aplicaciones } from '../../interfaces/aplicaciones.interface';
   selector: 'app-crear',
   templateUrl: './crear.component.html',
   styleUrls: ['./crear.component.css']
- 
+
 })
 
 export class CrearComponent {
@@ -24,6 +25,7 @@ export class CrearComponent {
   @ViewChild('miForm')
   form!: NgForm;
   titulo!: string;
+  selectedAplicacion: any ;
   constructor(private router: Router, public modalServices: ModalService) { }
 
   lstAplicaciones: aplicaciones[] = [];
@@ -43,6 +45,28 @@ export class CrearComponent {
     aplicacion: 'PAGINA PRINCIPAL',
 
   }
+  lstSecciones: secciones[] = [];
+
+  seccion: secciones = {
+    id: 1,
+    seccion: 'login',
+  }
+
+  seccion2: secciones = {
+    id: 2,
+    seccion: 'panel'
+  }
+  seccion3: secciones = {
+    id: 3,
+    seccion: 'contratar'
+  }
+  seccion4: secciones = {
+    id: 4,
+    seccion: 'pagar'
+  }
+
+
+
   ngOnInit() {
     this.lstAplicaciones.push(this.aplicacion);
     this.lstAplicaciones.push(this.aplicacion2);

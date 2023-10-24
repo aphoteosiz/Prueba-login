@@ -1,155 +1,115 @@
 <!-- <div class="mcb-background-overlay"> -->
-  <!-- <div > -->
-    <div class="componente-con-fondo"></div>
+<!-- <div > -->
+<div class="componente-con-fondo"></div>
 <h1 class="fs-1" class="fst-italic">CREAR</h1>
 <br><br>
 
 <!-- <div class="mb-3"> -->
 <!-- <div class="componente-con-fondo"></div> -->
-  <!-- <div class="row justify-content-center"> -->
-    <div class="container-fluid"></div>
-    <div class="row">
-      <div class="col">
-        <form (ngSubmit)="evaluarFormulario()" #miForm="ngForm">
+<!-- <div class="row justify-content-center"> -->
+<div class="container-fluid"></div>
+<div class="row">
+  <div class="col">
+    <form (ngSubmit)="evaluarFormulario()" #miForm="ngForm">
 
-        <label for="exampleFormControlInput1" class="form-label" class="fw-bold">titulo</label>
-        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="ingrese el titulo"  [(ngModel)]="titulo" name="titulo" required>
+      <label for="exampleFormControlInput1" class="form-label" class="fw-bold">titulo</label>
+      <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="ingrese el titulo"
+        [(ngModel)]="titulo" name="titulo" required>
 
-        <label for="exampleFormControlTextarea1" class="form-label" class="fw-bold">contenido</label>
-        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" required></textarea>
+      <label for="exampleFormControlTextarea1" class="form-label" class="fw-bold">contenido</label>
+      <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" required></textarea>
 
-        <br>
+      <br>
 
-        <label for="formFile" class="form-label" class="fw-bold">agregar una imagen</label>
-        <input class="form-control" type="file" id="formFile">
+      <label for="formFile" class="form-label" class="fw-bold">agregar una imagen</label>
+      <input class="form-control" type="file" id="formFile">
 
-        <br>
-        <p class="fw-bold">Tipo</p>
+      <br>
+      <p class="fw-bold">Tipo</p>
 
-        <div class="form-check"required>
+      <div class="form-check" required>
 
-          <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" >
-          <label class="form-check-label" for="flexRadioDefault1">
-            aviso
-          </label>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
-          <label class="form-check-label" for="flexRadioDefault2">
-            mensaje
-          </label>
+        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+        <label class="form-check-label" for="flexRadioDefault1">
+          aviso
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+        <label class="form-check-label" for="flexRadioDefault2">
+          mensaje
+        </label>
 
-        </div>
+      </div>
+      <button (click)="mostrarModal()"> aplicacion</button>
+    <div class="modal-is-open animation fade-in" *ngIf="modalServices.modal">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal" tabindex="-1" role="dialog" style="display: block;">
+          <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content text-center">
+              <div class="modal-header text-center">
+                <h5 class="modal-title align-items-center">aplicaciones</h5>
+              </div>
 
-        <br>
-        <button (click)="mostrarModal()">Aplicacion</button>
-        <div class="modal-is-open animation fade-in" *ngIf="modalServices.modal">
-          <div class="modal-dialog modal-dialog-centered">
-            <div class="modal" tabindex="-1" role="dialog" style="display: block;">
-              <div class="modal-dialog modal-sm" role="document">
-                <div class="modal-content text-center">
-                  <div class="modal-header text-center">
-                    <h5 class="modal-title align-items-center">aplicaciones</h5>
+              <div class="modal-body" class="text-center">
+                <label>aplicacion donde se mostrara</label>
+                <select class="form-select" [(ngModel)]="lstAplicaciones" aria-label="Default select example" required>
+                  <option selected disabled>aplicacion donde se desplegara</option>
+                  <option *ngFor="let item of lstAplicaciones">{{item.aplicacion}}</option>
+                </select>
+                <form *ngIf="lstAplicaciones">
+                  <div *ngFor="let item of lstSecciones">
+                    <input type="checkbox" [checked]="item.id"> {{item.seccion}}
                   </div>
+                </form>
+                <div class="content-center">
+                  <div class="container">
+                    <div class="row">
+                      <div class="col-sm">
+                        <!-- <form formGroup="form" (ngSubmit)="submitForm()" novalidate></form> -->
 
-                  <div  class="modal-body" class="text-center">
-                    <label>aplicacion donde se mostrara</label>
-                  <select  class="form-select" aria-label="Default select example" required>
+                <br>
+                <div class="container">
 
-                    <option *ngFor="let item of lstAplicaciones">{{item.aplicacion}}</option>
-                    <!-- <option value="1">ENICARE</option>
-                    <option value="2">SIUPP</option>
-                    <option value="3">PAGINA OFICIAL</option> -->
-                  </select>
-                    <br>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <br>
+                <!-- <input type="checkbox" [(ngModel)]="esPublicar"> -->
+                <br>
 
-                    <!-- <input type="checkbox" [(ngModel)]="esPublicar">
-                    <br>
 
-                    <label for="textInput2">fecha de cierre</label>
-                    <br>
-                    <div class="container">
-                      <input (click)="resetDate()" class="form-control" type="date" id="textInput2" [(ngModel)]="selectedDate"
-                        [disabled]="esPublicar==false">
-                    </div> -->
-                    <br>
-                    <div class="content-center">
-                      <div class="container">
-                        <div class="row">
-                          <div class="col-sm">
+                  <!-- <input (click)="resetDate()" class="form-control" type="date" id="textInput2" [(ngModel)]="selectedDate"
+                    [disabled]="esPublicar==false"> -->
+                </div>
+                <br>
+                <div class="content-center">
+                  <div class="container">
+                    <div class="row">
+                      <div class="col-sm">
+                         <div class="modal-footer">
+                  <button type="button" class="btn btn-success btn text-left" data-dismiss="modal" >
+                    publicar</button>
+                   <button type="button" class="btn btn-danger" data-dismiss="modal" >cancelar</button>
 
-                          </div>
-
-                        </div>
                       </div>
 
                     </div>
-                    <div class="modal-footer">
-                      <!-- <button type="button" class="btn btn-success btn text-left" data-dismiss="modal" (click)="publicar()">
-                        publicar</button>
-                      <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="cancelar()">cancelar</button>
-                    </div>
-                  </div> -->
+                  </div>
+
+                </div>
+
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <!-- <select class="form-select" aria-label="Default select example"  required>
-          <option selected disabled>aplicacion donde se desplegara</option>
-          <option value="1">ENICARE</option>
-          <option value="2">SIUPP</option>
-          <option value="3">PAGINA OFICIAL</option>
-        </select> -->
-        <br>
-        <!-- <P class="fw-bold">secciones de la aplicacion</P>
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="" id="flexCheckIndeterminateDisabled" disabled >
-          <label class="form-check-label" for="flexCheckIndeterminateDisabled">
-            Disabled indeterminate checkbox
-          </label>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="" id="flexCheckDisabled" disabled>
-          <label class="form-check-label" for="flexCheckDisabled">
-            Disabled checkbox
-          </label>
-        </div>
-
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="" id="flexCheckCheckedDisabled" checked disabled>
-          <label class="form-check-label" for="flexCheckCheckedDisabled">
-            Disabled checked checkbox
-          </label>
-
-        </div> -->
-
-        <br>
-        <!-- <P class="fw-bold">area donde se presentara</P>
-        <select class="form-select" aria-label="Default select example" required>
-          <option selected disabled>seleccione la zona donde se mostrara el anuncio</option>
-          <option value="1">Noreste</option>
-          <option value="2">Sureste</option>
-          <option value="3">Bajio</option>
-        </select> -->
-        <!-- <br><br>
-        <button (click)="evaluarFormulario()" type="button" class="btn btn-success">guardar</button>
-        <button (click)="salir()" type="button" class="btn btn-danger">cancelar</button> -->
-        <!-- </form> -->
-        </div>
-
       </div>
+    </div>
+    </form>
+  </div>
+</div>
 
 
-
-
-<!-- </div> -->
-<!-- <p class="fw-bold">aplicacion</p>
-<ul class="dropdown-menu">
-  <li><a class="dropdown-item" href="#">Regular link</a></li>
-  <li><a class="dropdown-item disabled" aria-disabled="true">Disabled link</a></li>
-  <li><a class="dropdown-item" href="#">Another link</a></li>
-</ul> -->
-
-
-
+      <br>
