@@ -42,74 +42,93 @@
 
       </div>
       <button (click)="mostrarModal()"> aplicacion</button>
-    <div class="modal-is-open animation fade-in" *ngIf="modalServices.modal">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal" tabindex="-1" role="dialog" style="display: block;">
-          <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content text-center">
-              <div class="modal-header text-center">
-                <h5 class="modal-title align-items-center">aplicaciones</h5>
-              </div>
+      <div class="modal-is-open animation fade-in" *ngIf="modalServices.modal">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal" tabindex="-1" role="dialog" style="display: block;">
+            <div class="modal-dialog modal-xl" role="document">
+              <div class="modal-content text-center">
+                <div class="modal-header text-center">
 
-              <div class="modal-body" class="text-center">
-                <label>aplicacion donde se mostrara</label>
-                <select class="form-select" [(ngModel)]="lstAplicaciones" aria-label="Default select example" required>
-                  <option selected disabled>aplicacion donde se desplegara</option>
-                  <option *ngFor="let item of lstAplicaciones">{{item.aplicacion}}</option>
-                </select>
-                <form *ngIf="lstAplicaciones">
-                  <div *ngFor="let item of lstSecciones">
-                    <input type="checkbox" [checked]="item.id"> {{item.seccion}}
-                  </div>
-                </form>
-                <div class="content-center">
-                  <div class="container">
-                    <div class="row">
-                      <div class="col-sm">
-                        <!-- <form formGroup="form" (ngSubmit)="submitForm()" novalidate></form> -->
+                  <h5 class="modal-title align-items-center">aplicaciones</h5>
+                  <button (click)="closeDialog()" type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
 
-                <br>
-                <div class="container">
 
+                <div class="modal-body" class="text-center">
+                  <label>aplicacion donde se mostrara</label>
+                  <select (change)="cambio($event)" class="form-select" [(ngModel)]="selectedAplicacion" aria-label="Default select example"
+                    required>
+                    <option selected disabled>aplicacion donde se desplegara</option>
+                    <option *ngFor="let item of lstAplicaciones" [value]="item.aplicacion">{{item.aplicacion}}</option>
+                  </select>
+                  <form *ngIf="selectedAplicacion!=''">
+                    <div *ngFor="let item of lstSecciones">
+                      <input type="checkbox" [checked]="item.id"> {{item.seccion}}
+                    </div>
+                  </form>
+                  <div class="content-center">
+                    <div class="container">
+                      <div class="row">
+                        <div class="col-sm">
+                          <!-- <form formGroup="form" (ngSubmit)="submitForm()" novalidate></form> -->
+
+                          <br>
+                          <div class="container">
+
+                          </div>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </div>
-                <br>
-                <!-- <input type="checkbox" [(ngModel)]="esPublicar"> -->
-                <br>
+                    <br>
+                    <!-- <input type="checkbox" [(ngModel)]="esPublicar"> -->
+                    <br>
 
 
-                  <!-- <input (click)="resetDate()" class="form-control" type="date" id="textInput2" [(ngModel)]="selectedDate"
+                    <!-- <input (click)="resetDate()" class="form-control" type="date" id="textInput2" [(ngModel)]="selectedDate"
                     [disabled]="esPublicar==false"> -->
-                </div>
-                <br>
-                <div class="content-center">
-                  <div class="container">
-                    <div class="row">
-                      <div class="col-sm">
-                         <div class="modal-footer">
-                  <button type="button" class="btn btn-success btn text-left" data-dismiss="modal" >
-                    publicar</button>
-                   <button type="button" class="btn btn-danger" data-dismiss="modal" >cancelar</button>
+                  </div>
+                  <br>
+                  <div class="content-center">
+                    <div class="container">
+                      <div class="row">
+                        <div class="col-sm">
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-success btn text-left" data-dismiss="modal">
+                              guardar</button>
 
+
+                          </div>
+
+                        </div>
                       </div>
 
                     </div>
+
                   </div>
-
-                </div>
-
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+      <div class="container">
+        <table class="table table-bordered table-striped table-hover">
+          <thead>
+            <tr class="text-center headerTabla tabla-text">
+              <th scope="col">aplicacion</th>
+              <th scope="col">areas</th>
+              <th scope="col">eliminar</th>
+
+            </tr>
+          </thead>
+        </table>
+      </div>
+
     </form>
   </div>
 </div>
 
 
-      <br>
+<br>

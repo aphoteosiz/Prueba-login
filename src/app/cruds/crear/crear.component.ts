@@ -25,7 +25,8 @@ export class CrearComponent {
   @ViewChild('miForm')
   form!: NgForm;
   titulo!: string;
-  selectedAplicacion: any ;
+  selectedAplicacion: string = '';
+  mostrarCheck: boolean = false;
   constructor(private router: Router, public modalServices: ModalService) { }
 
   lstAplicaciones: aplicaciones[] = [];
@@ -74,6 +75,12 @@ export class CrearComponent {
 
 
     console.log(this.lstAplicaciones);
+
+    this.lstSecciones.push(this.seccion);
+    this.lstSecciones.push(this.seccion2);
+    this.lstSecciones.push(this.seccion3);
+    this.lstSecciones.push(this.seccion4);
+    console.log(this.lstSecciones);
   }
 
   salir() {
@@ -151,6 +158,17 @@ export class CrearComponent {
   }
   mostrarSeleccion(){
     const opcionesSeleccionadas = this.options.filter
+  }
+  closeDialog() {
+    this.modalServices.closeModal();
+  }
+  cambio(app: any) {
+    console.log((app.target as HTMLSelectElement).value);
+    this.selectedAplicacion = (app.target as HTMLSelectElement).value;
+    this.mostrarCheck = true;
+
+
+
   }
 }
 
