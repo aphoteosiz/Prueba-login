@@ -10,7 +10,7 @@
 <div class="container-fluid"></div>
 <div class="row">
   <div class="col">
-    <form (ngSubmit)="evaluarFormulario()" #miForm="ngForm">
+    <form #miForm="ngForm">
 
       <label for="exampleFormControlInput1" class="form-label" class="fw-bold">titulo</label>
       <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="ingrese el titulo"
@@ -58,14 +58,17 @@
 
                 <div class="modal-body" class="text-center">
                   <label>aplicacion donde se mostrara</label>
-                  <select (change)="cambio($event)" class="form-select" [(ngModel)]="selectedAplicacion" aria-label="Default select example"
-                    required>
+                  <select (change)="cambio($event)" class="form-select" [(ngModel)]="selectedAplicacion"
+                    name="selectedAplicacion" aria-label="Default select example" required>
                     <option selected disabled>aplicacion donde se desplegara</option>
-                    <option *ngFor="let item of lstAplicaciones" [value]="item.aplicacion">{{item.aplicacion}}</option>
+                    <option *ngFor="let item of catalagoAplicaciones" [value]="item.id">{{item.aplicacion}}
+                    </option>
+
                   </select>
+
                   <form *ngIf="selectedAplicacion!=''">
                     <div *ngFor="let item of lstSecciones">
-                      <input type="checkbox" [checked]="item.id"> {{item.seccion}}
+                      <input type="checkbox" [(ngModel)]="item.activo" name="checkbox"> {{item.seccion}}
                     </div>
                   </form>
                   <div class="content-center">
@@ -95,7 +98,7 @@
                       <div class="row">
                         <div class="col-sm">
                           <div class="modal-footer">
-                            <button type="button" class="btn btn-success btn text-left" data-dismiss="modal">
+                            <button type="button" class="btn btn-success btn text-left" (click)="guardarSeccion()">
                               guardar</button>
 
 
@@ -118,11 +121,35 @@
           <thead>
             <tr class="text-center headerTabla tabla-text">
               <th scope="col">aplicacion</th>
-              <th scope="col">areas</th>
+              <th scope="col">seccione</th>
               <th scope="col">eliminar</th>
-
             </tr>
           </thead>
+          <tbody class="text-center">
+
+            <tr *ngFor="let apps of lstAplicaciones">
+              <td>{{apps.aplicacion}}</td>
+              <td>{{apps.seccion.seccion}}</td>
+
+              <td><button class="btn btn-danger"><i class="bi bi-trash-fill"></i></button></td>
+
+
+
+              <!-- <div class="d-flex justify-content-end">
+                <button *ngIf="!publicacion.estado" (click)="mostrarModal()" class="btn btn-secondary"><i
+                    class="bi bi-share" style="margin:10px"></i></button>
+
+                <button type="button" class="btn btn-success" (click)="editar()"><i class="bi bi-pencil-square"
+                    style="margin:10px"></i> </button>
+                <button (click)="eliminar()" class="btn btn-danger"><i class="bi bi-trash-fill"
+                    style="margin:10px"></i></button>
+              </div> -->
+
+
+            </tr>
+
+          </tbody>
+
         </table>
       </div>
 
