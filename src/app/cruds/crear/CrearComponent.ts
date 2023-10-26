@@ -6,6 +6,7 @@ import { ModalService } from 'src/app/services/modal.service';
 import { aplicaciones } from '../../interfaces/aplicaciones.interface';
 import { Secciones } from 'src/app/interfaces/secciones.interfaces';
 import { parseJSON } from 'jquery';
+import { zonas } from 'src/app/interfaces/zonas.interface';
 
 
 
@@ -87,6 +88,20 @@ export class CrearComponent {
     seccion: 'pagar',
     activo: false
   };
+  catalagoZonas: zonas[] = [];
+  zona1: zonas = {
+    id: 1,
+    zona: 'bajio',
+  };
+  zona2: zonas = {
+    id: 1,
+    zona: 'Noroeste',
+  };
+  zona3: zonas = {
+    id: 1,
+    zona: 'Centro',
+
+  };
 
 
 
@@ -100,6 +115,10 @@ export class CrearComponent {
     this.lstSecciones.push(this.seccion2);
     this.lstSecciones.push(this.seccion3);
     this.lstSecciones.push(this.seccion4);
+
+    this.catalagoZonas.push(this.zona1);
+    this.catalagoZonas.push(this.zona2);
+    this.catalagoZonas.push(this.zona3);
   }
 
   salir() {
@@ -243,5 +262,11 @@ export class CrearComponent {
     });
 
 
+  }
+  eliminarRegistro(registro: any) {
+    let id = this.lstAplicaciones.indexOf(registro);
+    if (id != 0) {
+      this.lstAplicaciones.splice(id);
+    }
   }
 }

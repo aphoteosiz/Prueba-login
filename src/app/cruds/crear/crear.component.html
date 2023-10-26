@@ -131,10 +131,7 @@
               <td>{{apps.aplicacion}}</td>
               <td>{{apps.seccion.seccion}}</td>
 
-              <td><button class="btn btn-danger"><i class="bi bi-trash-fill"></i></button></td>
-
-
-
+              <td><button (click)="eliminarRegistro(1)" class="btn btn-danger"><i class="bi bi-trash-fill"></i></button></td>
               <!-- <div class="d-flex justify-content-end">
                 <button *ngIf="!publicacion.estado" (click)="mostrarModal()" class="btn btn-secondary"><i
                     class="bi bi-share" style="margin:10px"></i></button>
@@ -144,15 +141,19 @@
                 <button (click)="eliminar()" class="btn btn-danger"><i class="bi bi-trash-fill"
                     style="margin:10px"></i></button>
               </div> -->
-
-
             </tr>
 
           </tbody>
 
         </table>
       </div>
-
+      <div class="container">
+      <p class="fw-bold margin: 1px">zonas</p>
+      <select name="zonas">
+        <option value="disabled" disabled> zona donde se desplegara</option>
+        <option *ngFor="let item of catalagoZonas" [value]="item.zona">{{item.zona}}
+      </option></select>
+</div>
     </form>
   </div>
 </div>
