@@ -229,8 +229,8 @@ export class CrearComponent {
 
     seccionesActivas.forEach((seccion) => {
       let app: aplicaciones = {
-        id: objApp.id,
-        aplicacion: objApp.aplicacion,
+        id: objApp[0].id,
+        aplicacion: objApp[0].aplicacion,
         seccion: {
           id: seccion.id,
           seccion: seccion.seccion,
