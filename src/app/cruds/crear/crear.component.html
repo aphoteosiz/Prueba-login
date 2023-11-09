@@ -13,11 +13,11 @@
     <!-- <form #miForm="ngForm"> -->
 
       <label for="exampleFormControlInput1" class="form-label" class="fw-bold">titulo</label>
-      <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="ingrese el titulo"
+      <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="ingrese el titulo"
         [(ngModel)]="titulo" name="titulo" required>
 
       <label for="exampleFormControlTextarea1" class="form-label" class="fw-bold">contenido</label>
-      <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" required></textarea>
+      <textarea class="form-control" id="exampleFormControlTextarea1" [(ngModel)]="contenido" rows="3" required></textarea>
       </div>
       </div>
 
@@ -26,8 +26,10 @@
       <div class="row">
         <div class="col">
       <label for="formFile" class="form-label" class="fw-bold">agregar una imagen</label>
-      <input class="form-control" type="file" id="formFile">
-        </div>
+      <form (ngSubmit)="guardarImagen()"   enctype="multipart/form-data">
+      <input type="file" name="imagen" (change)="seleccionarImagen($event)" class="form-control" type="file" id="formFile" accept="image/jpeg, image/jpg, image/png">
+        </form>
+    </div>
       </div>
 
       <div class="container-fluid"></div>
@@ -72,7 +74,7 @@
                 <div class="modal-body" style="align-items: center;">
                   <label>aplicacion donde se mostrara</label>
                   <select (change)="cambio($event)" class="form-select" [(ngModel)]="selectedAplicacion"
-                    name="selectedAplicacion" aria-label="Default select example" required>
+                    name="selectedAplicacion" aria-label="Default select example" [(ngModel)]="aplicacion" required>
                     <option selected disabled>aplicacion donde se desplegara</option>
                     <option *ngFor="let item of catalagoAplicaciones" [value]="item.id">{{item.aplicacion}}
                     </option>
@@ -168,9 +170,9 @@
       <div class="row">
         <div class="col">
       <p class="fw-bold">zonas</p>
-      <select name="zonas" style="margin-left: 10px;">
+      <select name="zonas" style="margin-left: 10px;" [(ngModel)]="zona1">
         <option value="disabled" disabled [selected]="true">seleccionar zona</option>
-        <option *ngFor="let item of catalagoZonas" [value]="item.zona">{{item.zona}}
+        <option *ngFor="let item of catalagoZonas" [value]="item.zona" >{{item.zona}}
       </option>
     </select>
 
@@ -183,7 +185,7 @@
       <div class="row">
         <div class="col">
 
- <button class="btn btn-success" (click)=" evaluarFormulario()">Guardar</button>
+ <button class="btn btn-success" (click)=" guardarRegistro()">Guardar</button>
     <button class="btn btn-danger" (click)="salir()">Cancelar</button>
         </div>
       </div>

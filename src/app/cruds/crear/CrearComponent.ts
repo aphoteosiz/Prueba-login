@@ -7,6 +7,9 @@ import { aplicaciones } from '../../interfaces/aplicaciones.interface';
 import { Secciones } from 'src/app/interfaces/secciones.interfaces';
 import { parseJSON } from 'jquery';
 import { zonas } from 'src/app/interfaces/zonas.interface';
+import { publicInfo } from 'src/app/interfaces/publicInfo.interface';
+import { Publicacion } from '../../interfaces/publicaciones.interface';
+import { ImageLoader } from '@angular/common';
 
 
 
@@ -19,6 +22,7 @@ import { zonas } from 'src/app/interfaces/zonas.interface';
 })
 
 export class CrearComponent {
+  [x: string]: any;
   registro: FormGroup | undefined;
   options = [
     { label: 'login', selected: false },
@@ -26,9 +30,11 @@ export class CrearComponent {
     { label: 'crear', selected: false },
     { label: 'editar', selected: false }
   ];
-  @ViewChild('miForm')
-  form!: NgForm;
+  // @ViewChild('miForm')
+  // form!: NgForm;
   titulo!: string;
+  imagenSeleccionada: File | any;
+  contenido!: string;
 
   selectedAplicacion = '';
 
@@ -36,7 +42,17 @@ export class CrearComponent {
   checked: boolean = false;
   constructor(private router: Router, public modalServices: ModalService) {
 
-   }
+  }
+  lstRegistro: publicInfo[] = [];
+  Registro: publicInfo = {
+    id: 0,
+    titulo: '',
+    contenido: '',
+    img: '', // Asignar una URL de imagen válida aquí
+    aplicacion: '',
+    seccion: '',
+    area: '',
+  };
 
   catalagoAplicaciones: aplicaciones[] = [];
 
@@ -153,43 +169,62 @@ export class CrearComponent {
       this.router.navigate(['/panelControl']);
     });
   }
-  evaluarFormulario(): boolean {
+  // evaluarFormulario(): boolean {
 
-    if (this.validarFormulario()) {
-      console.log('Formulario valido');
-      return true;
-    } else {
-      console.log('faltan campos obligatorios');
-      return false;
-    }
+  //   if (this.validarFormulario()) {
+  //     console.log('Formulario valido');
+  //     return true;
+  //   } else {
+  //     console.log('faltan campos obligatorios');
+  //     return false;
+  //   }
 
+  // }
+  // validarFormulario(): boolean {
+  //   const camposVacios = Object.keys(this.guardarRegistro).filter(
+  //     controlName => this.guardarRegistro[controlName].hasError('required')
+  //   );
+
+  //   if (camposVacios.length > 0) {
+  //     const camposVaciosMsg = camposVacios.join(', ');
+  //     Swal.fire({
+  //       icon: 'error',
+  //       title: 'Oops...',
+  //       text: 'Hay campos vacíos en: ' + camposVaciosMsg,
+  //       footer: 'Verifique si su información está completa'
+  //     });
+  //     return false;
+  //   } else {
+  //     // Lógica para guardar la sección
+  //     // ...
+
+  //     // Después de guardar, redirigir a la página de inicio
+  //     this.router.navigate(['/panelControl']);
+  //     return true
+  //   }
+
+  seleccionarImagen(event: any) {
+    this.imagenSeleccionada = event.target.files[0];
   }
-  validarFormulario(): boolean {
-    if (this.form.valid) {
-      Swal.fire({
-        position: 'top-end',
-        icon: 'success',
-        title: 'su notoficacion ha sido guardada',
-        showConfirmButton: false,
-        timer: 1500
-      });
-      this.router.navigate(['/panelControl']);
-      return true;
-    } else {
-      Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: 'hay campos vacios!',
-        footer: 'verifique si su informacion esta completa'
-      });
-      return false;
-    }
 
+  guardarImagen() {
+    const formData = new FormData();
+    formData.append('imagen', this.imagenSeleccionada);
 
-
-
-
+    this['http'].post('/api/subir-imagen', formData).subscribe(() => {
+      // Lógica para manejar la respuesta del servidor
+    });
   }
+
+
+
+
+
+
+
+
+
+
   mostrarModal() {
     console.log("modal");
 
@@ -239,8 +274,8 @@ export class CrearComponent {
         // let aplicacion: aplicaciones[];
         seccionesActivas.push(seccion);
 
-          this.selectedAplicacion = ''; // Restablece la selección de la aplicación
-          this.lstSecciones.forEach(item => item.activo = false); // Restablece las selecciones de las secciones
+        this.selectedAplicacion = ''; // Restablece la selección de la aplicación
+        this.lstSecciones.forEach(item => item.activo = false); // Restablece las selecciones de las secciones
 
 
 
@@ -273,4 +308,70 @@ export class CrearComponent {
       this.lstAplicaciones.splice(id);
     }
   }
+  guardarRegistro() {
+
+    const nuevaPublicacion: publicInfo = {
+      id: this.lstRegistro.length + 1,
+      titulo: this.titulo.replace(/[^a-zA-Z\s]/g, ''),
+      contenido: this.contenido = this['Publicacion'].toUpperCase(),
+      img: 'https://ejemplo.com/ruta-a-tu-imagen.jpg',
+      aplicacion: this.selectedAplicacion,
+      seccion: '',
+      area: ''
+    }
+    if (this.imagenSeleccionada) {
+      // Leer la imagen y convertirla a Base64
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        // Obtener la representación Base64 de la imagen
+        nuevaPublicacion.img = this.imagenSeleccionada;
+
+        // Guardar la nuevaPublicacion en el almacenamiento local
+        this.guardarPublicacionEnLocalStorage(nuevaPublicacion);
+
+        // Realizar otras operaciones necesarias
+        // ...
+
+        // Limpiar la selección de imagen
+        this.imagenSeleccionada = null;
+      };
+
+      reader.readAsDataURL(this.imagenSeleccionada);
+    } else {
+      console.error('No se ha seleccionado una imagen.');
+    }
+    this.lstRegistro.push(nuevaPublicacion);
+  }
+
+  guardarPublicacionEnLocalStorage(publicacion: publicInfo) {
+    // Convierte la publicación en JSON y guárdala en el almacenamiento local
+    const publicacionStr = JSON.stringify(publicacion);
+    localStorage.setItem('publicacion', publicacionStr);
+
+    // Puedes usar sessionStorage en lugar de localStorage si deseas que los datos sean temporales.
+    // sessionStorage.setItem('publicacion', publicacionStr);
+    this.router.navigate(['/panelControl']);
+  }
+
+
+
+
+
+
+  //     this.lstRegistro.push(nuevaPublicacion);
+  //   }
+
+  // this.titulo = '';
+  // this.clave = '';
+  // this.selectedOption = '';
+  // this.modalService.closeModal(
+  // }
+
 }
+
+
+
+
+
+
+

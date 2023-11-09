@@ -7,3 +7,4 @@ export interface publicInfo {
   seccion: string;
   area: string;
 }
+
