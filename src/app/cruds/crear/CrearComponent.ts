@@ -1,12 +1,13 @@
 import { Component, ViewChild } from '@angular/core';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
-import { NgForm } from '@angular/forms';
+import {FormGroup, NgForm } from '@angular/forms';
 import { ModalService } from 'src/app/services/modal.service';
 import { aplicaciones } from '../../interfaces/aplicaciones.interface';
 import { Secciones } from 'src/app/interfaces/secciones.interfaces';
 import { parseJSON } from 'jquery';
 import { zonas } from 'src/app/interfaces/zonas.interface';
+
 
 
 
@@ -18,6 +19,7 @@ import { zonas } from 'src/app/interfaces/zonas.interface';
 })
 
 export class CrearComponent {
+  registro: FormGroup | undefined;
   options = [
     { label: 'login', selected: false },
     { label: 'principal', selected: false },
@@ -32,7 +34,9 @@ export class CrearComponent {
 
   mostrarCheck: boolean = false;
   checked: boolean = false;
-  constructor(private router: Router, public modalServices: ModalService) { }
+  constructor(private router: Router, public modalServices: ModalService) {
+
+   }
 
   catalagoAplicaciones: aplicaciones[] = [];
 
@@ -221,22 +225,22 @@ export class CrearComponent {
   }
   guardarSeccion() {
 
-    console.log('selected', this.selectedAplicacion);
-    console.log('seccion', this.lstSecciones);
-
 
     let objApp: any
 
     objApp = this.catalagoAplicaciones.filter(app => app.id == parseInt(this.selectedAplicacion));
 
 
-    console.log('OBJETOOOOOOOOO A LLENAR', objApp);
+
 
     let seccionesActivas: Secciones[] = [];
     this.lstSecciones.forEach((seccion) => {
       if (seccion.activo == true) {
         // let aplicacion: aplicaciones[];
         seccionesActivas.push(seccion);
+
+          this.selectedAplicacion = ''; // Restablece la selección de la aplicación
+          this.lstSecciones.forEach(item => item.activo = false); // Restablece las selecciones de las secciones
 
 
 
