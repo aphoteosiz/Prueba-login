@@ -1,7 +1,7 @@
 <!-- <div class="mcb-background-overlay"> -->
 <!-- <div > -->
 <div class="componente-con-fondo"></div>
-<h1 class="fs-1" class="fst-italic">CREAR</h1>
+<h1 class="fs-1 fst-italic">CREAR</h1>
 <br><br>
 
 <!-- <div class="mb-3"> -->
@@ -12,8 +12,8 @@
   <div class="col">
     <!-- <form #miForm="ngForm"> -->
 
-      <label for="exampleFormControlInput1" class="form-label" class="fw-bold">titulo</label>
-      <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="ingrese el titulo"
+      <label for="titulo" class="form-label fw-bold">Título</label>
+      <input type="text" class="form-control" id="titulo" placeholder="ingrese el titulo"
         [(ngModel)]="titulo" name="titulo" required>
 
       <label for="exampleFormControlTextarea1" class="form-label" class="fw-bold">contenido</label>
@@ -27,7 +27,7 @@
         <div class="col">
       <label for="formFile" class="form-label" class="fw-bold">agregar una imagen</label>
       <form (ngSubmit)="guardarImagen()"   enctype="multipart/form-data">
-      <input type="file" name="imagen" (change)="seleccionarImagen($event)" class="form-control" type="file" id="formFile" accept="image/jpeg, image/jpg, image/png">
+      <input type="file" name="imagen" [(ngModel)]="img" (change)="seleccionarImagen($event)" class="form-control" type="file" id="formFile" accept="image/jpeg, image/jpg, image/png">
         </form>
     </div>
       </div>
@@ -39,13 +39,13 @@
 
       <div class="form-check" required>
 
-        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" [(ngModel)]="rdbAviso">
         <label class="form-check-label" for="flexRadioDefault1">
           aviso
         </label>
       </div>
       <div class="form-check">
-        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" [(ngModel)]="rdbMensaje">
         <label class="form-check-label" for="flexRadioDefault2">
           mensaje
         </label>
@@ -74,9 +74,9 @@
                 <div class="modal-body" style="align-items: center;">
                   <label>aplicacion donde se mostrara</label>
                   <select (change)="cambio($event)" class="form-select" [(ngModel)]="selectedAplicacion"
-                    name="selectedAplicacion" aria-label="Default select example" [(ngModel)]="aplicacion" required>
+                    name="selectedAplicacion" aria-label="Default select example"  required>
                     <option selected disabled>aplicacion donde se desplegara</option>
-                    <option *ngFor="let item of catalagoAplicaciones" [value]="item.id">{{item.aplicacion}}
+                    <option *ngFor="let item of catalagoAplicaciones" [(ngModel)]="aplicacion" [value]="item.id">{{item.aplicacion}}
                     </option>
 
                   </select>
@@ -172,7 +172,7 @@
       <p class="fw-bold">zonas</p>
       <select name="zonas" style="margin-left: 10px;" [(ngModel)]="zona1">
         <option value="disabled" disabled [selected]="true">seleccionar zona</option>
-        <option *ngFor="let item of catalagoZonas" [value]="item.zona" >{{item.zona}}
+        <option *ngFor="let item of catalagoZonas" [(ngModel)]="zona" [value]="item.zona" >{{item.zona}}
       </option>
     </select>
 

@@ -58,8 +58,7 @@
       <tr class="text-center headerTabla tabla-text">
         <th scope="col">ver</th>
         <th scope="col">notificacion</th>
-        <th scope="col">fecha de publicacion</th>
-        <th scope="col">fecha de vencimiento</th>
+
         <th scope="col">estado</th>
         <th scope="col">acciones</th>
       </tr>
@@ -71,22 +70,20 @@
         <td><button (click)="ver()" type="button" class="btn btn-dark"><i class="bi bi-eye-fill"
               style="margin:10px"></i></button>
         </td>
-        <td>{{publicacion.notificacion}}</td>
-        <td>{{publicacion.publicacion}}</td>
-        <td>{{publicacion.cierre}}</td>
-        <td>{{publicacion.estado}}</td>
+        <td>{{publicacion.titulo}}</td>
+      <td>{{publicacion.estado}}</td>
 
 
 
 
         <div class="d-flex justify-content-end">
            <button *ngIf="!publicacion.estado"(click)="mostrarModal()" class="btn btn-secondary"><i class="bi bi-share" style="margin:10px"
-              ></i></button>
+           placeholder="publicar"></i></button>
 
           <button type="button" class="btn btn-success"(click)="editar()"><i class="bi bi-pencil-square"
-              style="margin:10px"></i> </button>
+              style="margin:10px" placeholder="editar"></i> </button>
           <button (click)="eliminar()" class="btn btn-danger"><i class="bi bi-trash-fill"
-              style="margin:10px"></i></button>
+              style="margin:10px" placeholder="eliminar"></i></button>
 
 
 

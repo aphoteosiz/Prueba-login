@@ -5,6 +5,7 @@ import Swal from 'sweetalert2';
 import { ModalService } from 'src/app/services/modal.service';
 import { NgModel } from '@angular/forms';
 import { calendar } from 'ngx-bootstrap/chronos/moment/calendar';
+import { publicInfo } from 'src/app/interfaces/publicInfo.interface';
 
 
 
@@ -31,54 +32,38 @@ export class PanelControlComponent implements OnInit {
 
 
 
-  lstPublicaciones: Publicacion[] = [];
+  lstPublicaciones: publicInfo[] = [];
 
-  publicacion: Publicacion = {
+  publicacion: publicInfo = {
     id: 1,
-    notificacion: 'hahaha',
-    publicacion: 12344,
-    cierre: 2123,
+    titulo: 'hahaha',
+    contenido: '',
+    img: '',
+    aplicacion: '',
+    seccion: '',
+    area: '',
+    notificacion: '',
+    publicacion: new Date,
+    cierre: new Date,
     estado: true,
-    acciones: true,
-
   }
-  publicacion2: Publicacion = {
-    id: 2,
-    notificacion: 'ssss',
-    publicacion: 1234,
-    cierre: 121212,
-    estado: false,
-    acciones: true,
-
+  publicacion2: publicInfo = {
+    id: 0,
+    titulo: '',
+    contenido: '',
+    img: '',
+    aplicacion: '',
+    seccion: '',
+    area: '',
+    notificacion: '',
+    publicacion: new Date,
+    cierre: new Date,
+    estado: false
   }
-  publicacion3: Publicacion = {
-    id: 3,
-    notificacion: 'aaaaa',
-    publicacion: 231212,
-    cierre: 44323123,
-    estado: true,
-    acciones: true,
-
-
-  }
-  publicacion4: Publicacion = {
-    id: 4,
-    notificacion: 'bbbbb',
-    publicacion: 121231,
-    cierre: 3221321,
-    estado: false,
-    acciones: true,
-
-
-  }
-
-
-
   ngOnInit() {
     this.lstPublicaciones.push(this.publicacion);
     this.lstPublicaciones.push(this.publicacion2);
-    this.lstPublicaciones.push(this.publicacion3);
-    this.lstPublicaciones.push(this.publicacion4);
+
 
     console.log(this.lstPublicaciones);
   }

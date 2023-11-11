@@ -1,3 +1,5 @@
+import { publicInfo } from './publicInfo.interface';
+
 export interface Publicacion {
   id: number;
   notificacion: string;
@@ -5,4 +7,5 @@ export interface Publicacion {
   publicacion: number;
   cierre: number;
   acciones: boolean;
+  titlulo: string;
 }

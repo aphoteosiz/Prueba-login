@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
 import {FormGroup, NgForm } from '@angular/forms';
@@ -10,6 +10,7 @@ import { zonas } from 'src/app/interfaces/zonas.interface';
 import { publicInfo } from 'src/app/interfaces/publicInfo.interface';
 import { Publicacion } from '../../interfaces/publicaciones.interface';
 import { ImageLoader } from '@angular/common';
+import { DATE } from 'ngx-bootstrap/chronos/units/constants';
 
 
 
@@ -21,7 +22,7 @@ import { ImageLoader } from '@angular/common';
   styleUrls: ['./crear.component.css']
 })
 
-export class CrearComponent {
+export class CrearComponent implements OnInit {
   [x: string]: any;
   registro: FormGroup | undefined;
   options = [
@@ -35,6 +36,11 @@ export class CrearComponent {
   titulo!: string;
   imagenSeleccionada: File | any;
   contenido!: string;
+  img!: File;
+  secciones!: string;
+  zona!: string
+  rdbAviso!: object;
+  rdbMensaje!: object;
 
   selectedAplicacion = '';
 
@@ -46,12 +52,16 @@ export class CrearComponent {
   lstRegistro: publicInfo[] = [];
   Registro: publicInfo = {
     id: 0,
-    titulo: '',
-    contenido: '',
+    titulo: 'prueba',
+    contenido: 'esto es una prueba',
     img: '', // Asignar una URL de imagen válida aquí
-    aplicacion: '',
-    seccion: '',
-    area: '',
+    aplicacion: 'SIUP',
+    seccion: 'login',
+    area: 'Noroeste',
+    notificacion: '',
+    publicacion: new Date(),
+    cierre: new Date(),
+    estado: false
   };
 
   catalagoAplicaciones: aplicaciones[] = [];
@@ -313,11 +323,15 @@ export class CrearComponent {
     const nuevaPublicacion: publicInfo = {
       id: this.lstRegistro.length + 1,
       titulo: this.titulo.replace(/[^a-zA-Z\s]/g, ''),
-      contenido: this.contenido = this['Publicacion'].toUpperCase(),
+      contenido: this.contenido = this.contenido.toUpperCase(),
       img: 'https://ejemplo.com/ruta-a-tu-imagen.jpg',
       aplicacion: this.selectedAplicacion,
-      seccion: '',
-      area: ''
+      seccion: this.secciones,
+      area: this.zona,
+      notificacion: this.titulo.replace(/[^a-zA-Z\s]/g, ''),
+      publicacion: new Date(),
+      cierre: new Date(),
+      estado: true,
     }
     if (this.imagenSeleccionada) {
       // Leer la imagen y convertirla a Base64
